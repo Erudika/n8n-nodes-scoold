@@ -1,14 +1,21 @@
 {
-  "name": "n8n-nodes-scoold",
+  "name": "@erudika/n8n-nodes-scoold",
   "version": "0.1.0",
+  "type": "module",
   "description": "n8n community node for Scoold — search extraction and webhook-based event triggers",
   "license": "MIT",
   "homepage": "https://github.com/Erudika/n8n-nodes-scoold",
-  "keywords": ["n8n-community-node-package"],
-  "author": { "name": "Alex Bogdanovski", "email": "alex@erudika.com" },
+  "keywords": ["n8n-community-node-package", "scoold", "n8n-nodes-scoold", "questions-and-answers"],
+  "author": {
+    "name": "Alex Bogdanovski",
+    "email": "alex@erudika.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Erudika/n8n-nodes-scoold.git"
+  },
+  "publishConfig": {
+    "provenance": true
   },
   "scripts": {
     "build": "n8n-node build",

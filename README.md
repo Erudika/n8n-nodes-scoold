@@ -6,15 +6,16 @@
   <img width="360" alt="Scoold Logo" src="https://scoold.com/logo.svg"/>
   </picture>
   <br><br>
-  <h2>
+  <h3>
   The most effective way to share knowledge within your team or organization
-  </h2>
+  </h3>
 </div>
-<div align="center">
 
 # n8n-nodes-scoold
 
 An n8n community node package that integrates [Scoold](https://scoold.com) — the open-source Q&A platform — with your n8n workflows.
+
+[Follow the documentation](https://scoold.com/documentation/integrations/n8n/) to get started with the Scoold nodes for n8n.
 
 ## Nodes
 
