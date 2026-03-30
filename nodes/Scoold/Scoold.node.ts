@@ -68,6 +68,7 @@ export class Scoold implements INodeType {
 				},
 				options: [
 					{ name: 'Answer', value: 'answer' },
+					{ name: 'Any Type', value: '' },
 					{ name: 'Badge', value: 'badge' },
 					{ name: 'Comment', value: 'comment' },
 					{ name: 'Feedback', value: 'feedback' },
