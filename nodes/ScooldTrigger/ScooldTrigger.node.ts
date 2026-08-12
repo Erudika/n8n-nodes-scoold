@@ -129,8 +129,15 @@ export class ScooldTrigger implements INodeType {
 						return false;
 					}
 					return true;
-				} catch {
-					return false;
+				} catch (error) {
+					if (typeof error === 'object' && error !== null && 'httpCode' in error) {
+						const httpCode = (error as { httpCode?: string | number }).httpCode;
+						if (httpCode === 404 || httpCode === '404') {
+							return false;
+						}
+					}
+
+					throw error;
 				}
 			},
 

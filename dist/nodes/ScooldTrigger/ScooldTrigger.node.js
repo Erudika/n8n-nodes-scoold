@@ -111,8 +111,14 @@ class ScooldTrigger {
                         }
                         return true;
                     }
-                    catch {
-                        return false;
+                    catch (error) {
+                        if (typeof error === 'object' && error !== null && 'httpCode' in error) {
+                            const httpCode = error.httpCode;
+                            if (httpCode === 404 || httpCode === '404') {
+                                return false;
+                            }
+                        }
+                        throw error;
                     }
                 },
                 async create() {
