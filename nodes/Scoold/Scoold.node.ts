@@ -1269,7 +1269,7 @@ export class Scoold implements INodeType {
 				if ((error as { httpCode?: string }).httpCode) {
 					throw new NodeApiError(this.getNode(), error as JsonObject, { itemIndex: i });
 				}
-				throw error;
+				throw new NodeOperationError(this.getNode(), error as Error, { itemIndex: i });
 			}
 		}
 

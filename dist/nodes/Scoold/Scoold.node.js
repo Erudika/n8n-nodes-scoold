@@ -1197,7 +1197,7 @@ class Scoold {
                 if (error.httpCode) {
                     throw new n8n_workflow_1.NodeApiError(this.getNode(), error, { itemIndex: i });
                 }
-                throw error;
+                throw new n8n_workflow_1.NodeOperationError(this.getNode(), error, { itemIndex: i });
             }
         }
         return [returnData];

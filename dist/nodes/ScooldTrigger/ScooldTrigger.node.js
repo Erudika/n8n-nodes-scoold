@@ -20,6 +20,7 @@ class ScooldTrigger {
             group: ['trigger'],
             version: 1,
             description: 'Starts a workflow when a Scoold event occurs',
+            subtitle: '={{$parameter["events"].join(", ")}}',
             defaults: {
                 name: 'Scoold Trigger',
             },
@@ -118,7 +119,7 @@ class ScooldTrigger {
                                 return false;
                             }
                         }
-                        throw error;
+                        throw new n8n_workflow_1.NodeApiError(this.getNode(), error);
                     }
                 },
                 async create() {
@@ -161,7 +162,18 @@ class ScooldTrigger {
                             json: true,
                         });
                     }
-                    catch {
+                    catch (error) {
+                        if (typeof error === 'object' && error !== null && 'httpCode' in error) {
+                            const httpCode = error.httpCode;
+                            if (httpCode === 404 || httpCode === '404') {
+                            }
+                            else {
+                                throw new n8n_workflow_1.NodeApiError(this.getNode(), error);
+                            }
+                        }
+                        else {
+                            throw new n8n_workflow_1.NodeApiError(this.getNode(), error);
+                        }
                     }
                     delete staticData.webhookId;
                     delete staticData.webhookSecret;

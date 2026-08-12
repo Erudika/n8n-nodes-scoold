@@ -1,11 +1,13 @@
 import { createHmac } from 'crypto';
 import {
+	NodeApiError,
 	NodeConnectionTypes,
 	type IHookFunctions,
 	type ILoadOptionsFunctions,
 	type INodePropertyOptions,
 	type INodeType,
 	type INodeTypeDescription,
+	type JsonObject,
 	type IWebhookFunctions,
 	type IWebhookResponseData,
 } from 'n8n-workflow';
@@ -27,6 +29,7 @@ export class ScooldTrigger implements INodeType {
 		group: ['trigger'],
 		version: 1,
 		description: 'Starts a workflow when a Scoold event occurs',
+		subtitle: '={{$parameter["events"].join(", ")}}',
 		defaults: {
 			name: 'Scoold Trigger',
 		},
@@ -137,7 +140,7 @@ export class ScooldTrigger implements INodeType {
 						}
 					}
 
-					throw error;
+					throw new NodeApiError(this.getNode(), error as JsonObject);
 				}
 			},
 
@@ -194,8 +197,17 @@ export class ScooldTrigger implements INodeType {
 						url: `${baseUrl}/api/webhooks/${webhookId}`,
 						json: true,
 					});
-				} catch {
-					// Webhook may already be gone; treat as success
+				} catch (error) {
+					if (typeof error === 'object' && error !== null && 'httpCode' in error) {
+						const httpCode = (error as { httpCode?: string | number }).httpCode;
+						if (httpCode === 404 || httpCode === '404') {
+							// Webhook may already be gone; treat as success
+						} else {
+							throw new NodeApiError(this.getNode(), error as JsonObject);
+						}
+					} else {
+						throw new NodeApiError(this.getNode(), error as JsonObject);
+					}
 				}
 
 				delete staticData.webhookId;
