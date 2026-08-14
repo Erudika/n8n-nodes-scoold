@@ -112,13 +112,13 @@ Searches for Scoold objects by type and full-text query string.
 Go to **Settings → Community Nodes → Install** and enter:
 
 ```
-n8n-nodes-scoold
+@erudika/n8n-nodes-scoold
 ```
 
 ### Self-hosted (CLI)
 
 ```bash
-npm install n8n-nodes-scoold
+npm install @erudika/n8n-nodes-scoold
 ```
 
 Then restart n8n.

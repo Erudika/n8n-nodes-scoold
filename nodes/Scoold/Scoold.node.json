@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-scoold",
+	"node": "@erudika/n8n-nodes-scoold.scoold",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Communication"],

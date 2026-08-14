@@ -1,6 +1,6 @@
 {
     "name": "@erudika/n8n-nodes-scoold",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "description": "n8n community node for Scoold — search extraction and webhook-based event triggers",
     "license": "MIT",
     "homepage": "https://github.com/Erudika/n8n-nodes-scoold",
@@ -28,7 +28,8 @@
         "lint": "n8n-node lint",
         "lint:fix": "n8n-node lint --fix",
         "release": "n8n-node release",
-        "prepublishOnly": "n8n-node prerelease"
+        "prepublishOnly": "n8n-node prerelease",
+        "version": "auto-changelog -p && git add CHANGELOG.md"
     },
     "files": [
         "dist"
@@ -46,6 +47,7 @@
     },
     "devDependencies": {
         "@n8n/node-cli": "^0.43.3",
+        "auto-changelog": "^2.6.0",
         "eslint": "^9.29.0",
         "prettier": "^3.9.6",
         "release-it": "^21.0.2",
