@@ -65,7 +65,6 @@ class ScooldTrigger {
                     ],
                 },
             ],
-            usableAsTool: true,
         };
         this.methods = {
             loadOptions: {

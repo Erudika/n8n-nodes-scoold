@@ -75,7 +75,6 @@ export class ScooldTrigger implements INodeType {
 				],
 			},
 		],
-		usableAsTool: true,
 	};
 
 	methods = {
